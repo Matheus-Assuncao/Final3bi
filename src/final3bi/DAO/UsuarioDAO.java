@@ -29,6 +29,8 @@ public class UsuarioDAO {
             pstm.setString(1, objusuariodto.getUser());
             pstm.setString(2, objusuariodto.getSenha());
             
+            pstm.execute();
+            
             ResultSet rs = pstm.executeQuery();
             return rs;
 
@@ -36,6 +38,25 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + e);
             return null;
+        }
+    }
+    
+    public void cadastrarUser(UsuarioDTO objuserDto){
+        conn = new ConectaBD().conexao();
+        
+        try{
+            String sql = "INSERT INTO usuarios (user,nome,senha) VALUES (?,?,?)";
+            
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, objuserDto.getUser());
+            pstm.setString(2, objuserDto.getNome());
+            pstm.setString(3, objuserDto.getSenha());
+            
+            pstm.execute();
+            pstm.close();
+            
+        }catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro de usuário: " + e);
         }
     }
 }
