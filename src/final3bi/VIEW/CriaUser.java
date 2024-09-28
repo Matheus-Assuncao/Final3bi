@@ -141,19 +141,19 @@ public class CriaUser extends javax.swing.JFrame {
 
     private void btnCriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaActionPerformed
         String user,nome,senha;
-        
+        //Pegar textos dos txtField
         user = txtUser.getText();
         nome = txtNome.getText();
         senha = txtSenha.getText();
-        
+        //Iniciar o obj DTO do relato mandando as informacoes
         UsuarioDTO objuserDto = new UsuarioDTO();
         objuserDto.setUser(user);
         objuserDto.setNome(nome);
         objuserDto.setSenha(senha);
-        
+        //Fazer a conexao enviando o obj DTO
         UsuarioDAO objuserDao = new UsuarioDAO();
         objuserDao.cadastrarUser(objuserDto);
-        
+        //Mensagem de confirmacao
         JOptionPane.showMessageDialog(null, "Usuario cadastrado");
        
     }//GEN-LAST:event_btnCriaActionPerformed

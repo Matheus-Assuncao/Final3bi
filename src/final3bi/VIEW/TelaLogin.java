@@ -16,6 +16,7 @@ import java.sql.ResultSet;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
+    public static String userName;
     /**
      * Creates new form TelaLogin
      */
@@ -58,6 +59,11 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         btnPrimeraVez.setText("PRIMEIRA VEZ");
+        btnPrimeraVez.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrimeraVezActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel3.setText("CityClean ");
@@ -140,33 +146,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        try {
-            String user, senha;
-            
-            user = txtUser.getText();
-            senha = txtSenha.getText();
-            
-            UsuarioDTO objuserdto = new UsuarioDTO();
-            objuserdto.setUser(user);
-            objuserdto.setSenha(senha);
-            
-            UsuarioDAO objuserdao = new UsuarioDAO();
-            ResultSet rsUserDao = objuserdao.autenticacaoUsuario(objuserdto);
-
-            if (rsUserDao.next()) {
-                // Chamar tela que eu quero abrir
-                MenuVIEW tela = new MenuVIEW();
-                tela.setVisible(true);dispose();
-                
-            }else{
-                // Enviar mensagem dizendo incorreto
-                JOptionPane.showMessageDialog(null, "Usuario ou Senha Inválida");
-            }
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "FRMLOGVIEW "+e);
-        }
+        verificaUser();
+        setId();
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnPrimeraVezActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeraVezActionPerformed
+        CriaUser tela = new CriaUser();
+        tela.setVisible(true);dispose();
+    }//GEN-LAST:event_btnPrimeraVezActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,4 +200,40 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+    private void verificaUser(){
+        try {
+            String user, senha;
+            
+            user = txtUser.getText();
+            senha = txtSenha.getText();
+            
+            UsuarioDTO objuserdto = new UsuarioDTO();
+            objuserdto.setUser(user);
+            objuserdto.setSenha(senha);
+            
+            UsuarioDAO objuserdao = new UsuarioDAO();
+            ResultSet rsUserDao = objuserdao.autenticacaoUsuario(objuserdto);
+
+            if (rsUserDao.next()) {
+                // Chamar tela que eu quero abrir
+                MenuVIEW tela = new MenuVIEW();
+                tela.setVisible(true);dispose();
+                
+            }else{
+                // Enviar mensagem dizendo incorreto
+                JOptionPane.showMessageDialog(null, "Usuario ou Senha Inválida");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "FRMLOGVIEW "+e);
+        }
+    }
+    
+    private void setId(){
+        userName = txtUser.getText();
+    }
+    
+    
+    
 }

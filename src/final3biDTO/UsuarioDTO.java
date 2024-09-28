@@ -9,9 +9,8 @@ package final3biDTO;
  * @author mathe
  */
 public class UsuarioDTO {
-    private String user = "";
-    private String nome = "";
-    private String senha = "";
+    private String user,nome,senha;
+    private int id_user;
 
     public String getUser() {
         return user;
@@ -35,6 +34,14 @@ public class UsuarioDTO {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
     
 }
