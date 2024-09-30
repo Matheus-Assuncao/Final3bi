@@ -114,12 +114,7 @@ public class RelatoVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviaActionPerformed
-        //Iniciar DTO relato e setar o relato
-        RelatoDTO objrelatoDto = new RelatoDTO();
-        objrelatoDto.setRelato(txtRelato.getText());
-        //Fazer a conexao enviando o obj DTO do relato
-        RelatoDAO objrelatoDao = new RelatoDAO();
-        objrelatoDao.enviarRelato(objrelatoDto);
+        enviaRelato();
     }//GEN-LAST:event_btnEnviaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -179,5 +174,19 @@ public class RelatoVIEW extends javax.swing.JFrame {
         UsuarioDAO objuserDao = new UsuarioDAO();
         int id = objuserDao.getId(objuserDto);
         return id;
+    }
+    
+    private void enviaRelato(){
+        //Iniciar DTO relato e setar o relato
+        RelatoDTO objrelatoDto = new RelatoDTO();
+        objrelatoDto.setRelato(txtRelato.getText());
+        //Pegar id usuario
+        int id = pegarId();
+        objrelatoDto.setId_user(id);
+        //Fazer a conexao enviando o obj DTO do relato
+        RelatoDAO objrelatoDao = new RelatoDAO();
+        objrelatoDao.enviarRelato(objrelatoDto);
+        //Mensagem que deu certo
+        JOptionPane.showMessageDialog(null, "Relato Enviado!");
     }
 }

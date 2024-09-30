@@ -140,22 +140,10 @@ public class CriaUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaActionPerformed
-        String user,nome,senha;
-        //Pegar textos dos txtField
-        user = txtUser.getText();
-        nome = txtNome.getText();
-        senha = txtSenha.getText();
-        //Iniciar o obj DTO do relato mandando as informacoes
-        UsuarioDTO objuserDto = new UsuarioDTO();
-        objuserDto.setUser(user);
-        objuserDto.setNome(nome);
-        objuserDto.setSenha(senha);
-        //Fazer a conexao enviando o obj DTO
-        UsuarioDAO objuserDao = new UsuarioDAO();
-        objuserDao.cadastrarUser(objuserDto);
-        //Mensagem de confirmacao
-        JOptionPane.showMessageDialog(null, "Usuario cadastrado");
-       
+        cadastraUser();
+        limpaCampos();
+        TelaLogin tela = new TelaLogin();
+        tela.setVisible(true);dispose();
     }//GEN-LAST:event_btnCriaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -209,4 +197,29 @@ public class CriaUser extends javax.swing.JFrame {
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastraUser(){
+        String user,nome,senha;
+        //Pegar textos dos txtField
+        user = txtUser.getText();
+        nome = txtNome.getText();
+        senha = txtSenha.getText();
+        //Iniciar o obj DTO do relato mandando as informacoes
+        UsuarioDTO objuserDto = new UsuarioDTO();
+        objuserDto.setUser(user);
+        objuserDto.setNome(nome);
+        objuserDto.setSenha(senha);
+        //Fazer a conexao enviando o obj DTO
+        UsuarioDAO objuserDao = new UsuarioDAO();
+        objuserDao.cadastrarUser(objuserDto);
+        //Mensagem de confirmacao
+        JOptionPane.showMessageDialog(null, "Usuario cadastrado"); 
+    }
+    
+    private void limpaCampos(){
+        txtUser.setText("");
+        txtSenha.setText("");
+        txtNome.setText("");
+    }
+    
 }
