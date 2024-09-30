@@ -30,6 +30,8 @@ public class MenuVIEW extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnRelato = new javax.swing.JButton();
+        btnQuemSomos = new javax.swing.JButton();
+        btnRelato1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -46,6 +48,20 @@ public class MenuVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnQuemSomos.setText("Quem somos");
+        btnQuemSomos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuemSomosActionPerformed(evt);
+            }
+        });
+
+        btnRelato1.setText("FEEDBACK");
+        btnRelato1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelato1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -55,8 +71,15 @@ public class MenuVIEW extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(236, 236, 236))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(btnRelato)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(btnQuemSomos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRelato1)
+                            .addComponent(btnRelato))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -66,7 +89,11 @@ public class MenuVIEW extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
                 .addComponent(btnRelato)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(btnRelato1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addComponent(btnQuemSomos)
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,6 +114,16 @@ public class MenuVIEW extends javax.swing.JFrame {
         RelatoVIEW tela = new RelatoVIEW();
         tela.setVisible(true);dispose();
     }//GEN-LAST:event_btnRelatoActionPerformed
+
+    private void btnQuemSomosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemSomosActionPerformed
+        QuemSomosVIEW tela = new QuemSomosVIEW();
+        tela.setVisible(true);dispose();
+    }//GEN-LAST:event_btnQuemSomosActionPerformed
+
+    private void btnRelato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelato1ActionPerformed
+        FeedbackVIEW tela = new FeedbackVIEW();
+        tela.setVisible(true);dispose();
+    }//GEN-LAST:event_btnRelato1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +161,9 @@ public class MenuVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnQuemSomos;
     private javax.swing.JButton btnRelato;
+    private javax.swing.JButton btnRelato1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

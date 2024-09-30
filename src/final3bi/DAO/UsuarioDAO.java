@@ -64,33 +64,6 @@ public class UsuarioDAO {
         }
     }
     
-    public ArrayList<UsuarioDTO> pesquisarUser(){
-        String sql = "SELECT * FROM usuarios";
-        //Conexao com o banco
-        conn = new ConectaBD().conexao();
-        try {
-            //Configurar o pstm
-            pstm = conn.prepareStatement(sql);
-            //Montar o ResultSet
-            rs = pstm.executeQuery();
-            
-            //Enquanto o resultado do banco tiver proximo, significa que tem mais informações
-            while(rs.next()){ 
-                UsuarioDTO objuserDto = new UsuarioDTO();
-                objuserDto.setId_user(rs.getInt("id_user")); //usando setter no DTOuser com o id que vem da BD
-                objuserDto.setUser(rs.getString("user"));
-                objuserDto.setNome(rs.getString("nome"));
-                
-                lista.add(objuserDto); //Adicionar o registros dentro de uma lista(array)
-            }
-               
-            
-        } catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, "UsuarioDAO pesquisar: "+err);
-        }
-        
-        return lista;
-    }
     
     public int getId(UsuarioDTO objusuarioDto){
         String sql = "SELECT id_user FROM usuarios WHERE user = ?";

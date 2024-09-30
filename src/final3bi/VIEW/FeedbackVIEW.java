@@ -4,23 +4,22 @@
  */
 package final3bi.VIEW;
 
-import final3bi.DAO.RelatoDAO;
+import final3bi.DAO.FeedbackDAO;
 import final3bi.DAO.UsuarioDAO;
-import final3biDTO.RelatoDTO;
+import final3biDTO.FeedbackDTO;
 import final3biDTO.UsuarioDTO;
 import javax.swing.JOptionPane;
-import java.sql.ResultSet;
 
 /**
  *
  * @author mathe
  */
-public class RelatoVIEW extends javax.swing.JFrame {
+public class FeedbackVIEW extends javax.swing.JFrame {
 
     /**
-     * Creates new form RelatoVIEW
+     * Creates new form FeedbackVIEW
      */
-    public RelatoVIEW() {
+    public FeedbackVIEW() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -36,26 +35,25 @@ public class RelatoVIEW extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtRelato = new javax.swing.JTextField();
-        btnEnvia = new javax.swing.JButton();
+        txtFeedback = new javax.swing.JTextField();
+        btnEnviar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Fazer um Relato");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("FEEDBACK");
 
-        btnEnvia.setText("Enviar");
-        btnEnvia.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviaActionPerformed(evt);
+                btnEnviarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Voltar menu");
+        jButton1.setText("MENU");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -67,43 +65,42 @@ public class RelatoVIEW extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(293, 293, 293)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(60, 60, 60))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(txtRelato, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(308, 308, 308)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(321, 321, 321)
-                        .addComponent(btnEnvia)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGap(145, 145, 145)
+                        .addComponent(txtFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEnviar)
+                .addGap(184, 184, 184)
+                .addComponent(jButton1)
+                .addGap(79, 79, 79))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton1)))
-                .addGap(31, 31, 31)
-                .addComponent(txtRelato, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(btnEnvia)
-                .addGap(36, 36, 36))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addGap(39, 39, 39)
+                .addComponent(txtFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnviar)
+                    .addComponent(jButton1))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,10 +110,10 @@ public class RelatoVIEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEnviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviaActionPerformed
-        enviaRelato();
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        enviaCadastro();
         limpaCampos();
-    }//GEN-LAST:event_btnEnviaActionPerformed
+    }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MenuVIEW tela = new MenuVIEW();
@@ -140,58 +137,59 @@ public class RelatoVIEW extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RelatoVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RelatoVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RelatoVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RelatoVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RelatoVIEW().setVisible(true);
+                new FeedbackVIEW().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnvia;
+    private javax.swing.JButton btnEnviar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtRelato;
+    private javax.swing.JTextField txtFeedback;
     // End of variables declaration//GEN-END:variables
 
-    private int pegarId(){
-        String user = TelaLogin.userName; // Colocando o valor de user na variavel
-        // DTO - Informacoes 
-        UsuarioDTO objuserDto = new UsuarioDTO(); //criando dto
-        objuserDto.setUser(user); // setando user no objeto
-        //DAO - Conexao com o banco
+    private void enviaCadastro(){
+        //Declarar variaveis
+        String feedback = txtFeedback.getText();
+        String user = TelaLogin.userName;
+        
+                
+        //Pegar valor ID user
         UsuarioDAO objuserDao = new UsuarioDAO();
-        int id = objuserDao.getId(objuserDto);
-        return id;
-    }
-    
-    private void enviaRelato(){
-        //Iniciar DTO relato e setar o relato
-        RelatoDTO objrelatoDto = new RelatoDTO();
-        objrelatoDto.setRelato(txtRelato.getText());
-        //Pegar id usuario
-        int id = pegarId();
-        objrelatoDto.setId_user(id);
-        //Fazer a conexao enviando o obj DTO do relato
-        RelatoDAO objrelatoDao = new RelatoDAO();
-        objrelatoDao.enviarRelato(objrelatoDto);
-        //Mensagem que deu certo
-        JOptionPane.showMessageDialog(null, "Relato Enviado!");
+        UsuarioDTO objusuarioDto = new UsuarioDTO();
+        objusuarioDto.setUser(user);
+        int id = objuserDao.getId(objusuarioDto);
+        
+        //Getters e Setters
+        FeedbackDTO objfeedbackDto = new FeedbackDTO();
+        objfeedbackDto.setFeedback(feedback);
+        objfeedbackDto.setId_user(id);
+        
+        
+        //Conexao 
+        FeedbackDAO objfeedbackDao = new FeedbackDAO();
+        objfeedbackDao.cadastraFeedback(objfeedbackDto);
+        
+        JOptionPane.showMessageDialog(null, "FeedBack enviado!");
     }
     
     private void limpaCampos(){
-        txtRelato.setText("");
+        txtFeedback.setText("");
     }
+
 }
